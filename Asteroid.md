@@ -1,9 +1,8 @@
 # Asteroid - Plan - Config
 
-	
-	
-	* Ship icon
-	- Unit icon
+dsadsadsadsa	
+* Ship icon
+- Unit icon
 	- Boss icon
 	- Explosion image
 	- Weapon icon
