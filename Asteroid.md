@@ -1,18 +1,17 @@
 # Asteroid - Plan - Config
-	(
-		Ship icon
-		unit icon
-		boss icon
-		explosion image
-		weapon icon
-		(Alternative)scrolling down background image
+	Needs
+	- Ship icon
+	- Unit icon
+	- Boss icon
+	- Explosion image
+	- Weapon icon
+	- Scrolling down background image(Alternative)
 
-		manual interface:
-							start/restart
-							select stages
-							mod
-							exit
-	)
+	Manual interface:
+	- Start/restart
+	- Select stages
+	- Mod
+	- Exit
 
 1. Automatic fire and Keyboard control movement.
 	
