@@ -1,7 +1,7 @@
 # Asteroid - Plan - Config
 
-	
-* Ship icon
+Needs	
+- Ship icon
 - Unit icon
 - Boss icon
 - Explosion image
