@@ -1,12 +1,12 @@
 # Asteroid - Plan - Config
 
-dsadsadsadsa	
+	
 * Ship icon
 - Unit icon
-	- Boss icon
-	- Explosion image
-	- Weapon icon
-	- Scrolling down background image(Alternative)
+- Boss icon
+- Explosion image
+- Weapon icon
+- Scrolling down background image(Alternative)
 
 	Manual interface:
 	- Start/restart
