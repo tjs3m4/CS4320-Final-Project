@@ -1,4 +1,4 @@
-Asteroid - Plan - Config
+# Asteroid - Plan - Config
 	(
 		Ship icon
 		unit icon
