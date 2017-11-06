@@ -8,11 +8,11 @@ Needs
 - Weapon icon
 - Scrolling down background image(Alternative)
 
-	Manual interface:
-	- Start/restart
-	- Select stages
-	- Mod
-	- Exit
+Manual interface:
+- Start/restart
+- Select stages
+- Mod
+- Exit
 
 1. Automatic fire and Keyboard control movement.
 	
