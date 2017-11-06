@@ -15,49 +15,64 @@ Manual interface:
 - Exit
 
 1. Automatic fire and Keyboard control movement.
-	
-	
-2. Game over once get hit. (Alternatively can have HP)
+		
+2. Game over once get hit. 
+- (Alternatively can have HP)
 
-
-3. Enemy can drop weapon after defeat. (Alternatively can drop HP recover stuffs and Shield item---Avoid one hit)
+3. Enemy can drop weapon after defeat. 
+- (Alternatively can drop HP recover stuffs and Shield item---Avoid one hit)
 
 
 4. Weapons change fire mod.
-	Default: uzi -> straight forward -> rapid 1s -> demage 2
+- Default: uzi
+	- straight forward
+	- rapid 1s
+	- demage 2
 
-	Weapon 1:
-		Straight line laser -> straight forward -> rapid 0.5s -> demage 1
-		High rate drop by units
-	Weapon 2:
-		Gatling Gun -> change direction by mouse -> rapid 0.5s -> demage 2
-		High rate drop by bosses
-	Weapon 3(Alternative):
-		Double weapon system
-		Low rate drop by units
+- Weapon 1:
+	- Straight line laser
+	- straight forward
+	- rapid 0.5s
+	- demage 1
+	- High rate drop by units (10%)
+- Weapon 2:
+	- Gatling Gun
+	- change direction by mouse
+	- rapid 0.5s
+	- demage 2
+	- High rate drop by bosses(70%)
+- Weapon 3(Alternative):
+	- Double weapon system
+	- Low rate drop by units(2%)
 
 
 5. Totally 3 stages, each stage has a boss
-	Stage 1:
-		unit hp: 1 -> boss hp: 50 -> slow speed -> show up till 20 units kill
+- Stage 1:
+	- unit hp: 1
+	- boss hp: 50
+	- slow speed
+	- show up till 20 units kill
 
-	Stage 2:
-		unit hp: 2 -> boss hp: 150 -> medium speed -> show up till 50 units kill
+- Stage 2:
+	- unit hp: 2
+	- boss hp: 150
+	- medium speed
+	- show up till 50 units kill
 
-	Stage 3:
-		unit hp: 3 -> boss hp: 300 -> fast speed -> show up till 100 units kill
-
+- Stage 3:
+	- unit hp: 3
+	- boss hp: 300
+	- fast speed
+	- show up till 100 units kill
 
 6. Infinity mode(Alternative)
-
-	unit 1: 1 credit
-	boss 1: 20 credits
-
-	unit 2: 2 credits
-	boss 2: 50 credits
-
-	unit 3: 3 credits
-	boss 3: 100 credits
-
-
-	Record scores
+- Stage 1:
+	- unit 1: 1 credit
+	- boss 1: 20 credits
+- Stage 2:
+	- unit 2: 2 credits
+	- boss 2: 50 credits
+- Stage 3:
+	- unit 3: 3 credits
+	- boss 3: 100 credits
+- Record scores
