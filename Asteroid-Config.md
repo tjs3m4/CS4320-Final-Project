@@ -8,22 +8,22 @@ Needs
 - Weapon icon
 - Scrolling down background image(Alternative)
 
-Manual interface:
+# Manual interface:
 - Start/restart
 - Select stages
 - Mod
 - Exit
 
-Automatic fire and Keyboard control movement.
+# Automatic fire and Keyboard control movement.
 		
-Game over once get hit. 
+# Game over once get hit. 
 - (Alternatively can have HP)
 
-Enemy can drop weapon after defeat. 
+# Enemy can drop weapon after defeat. 
 - (Alternatively can drop HP recover stuffs and Shield item---Avoid one hit)
 
 
-Weapons change fire mod.
+# Weapons change fire mod.
 - Default: uzi
 	- straight forward
 	- rapid 1s
@@ -46,7 +46,7 @@ Weapons change fire mod.
 	- Low rate drop by units(2%)
 
 
-Totally 3 stages, each stage has a boss
+# Totally 3 stages, each stage has a boss
 - Stage 1:
 	- unit hp: 1
 	- boss hp: 50
@@ -65,7 +65,7 @@ Totally 3 stages, each stage has a boss
 	- fast speed
 	- show up till 100 units kill
 
-Infinity mode(Alternative)
+# Infinity mode(Alternative)
 - Stage 1:
 	- unit 1: 1 credit
 	- boss 1: 20 credits
