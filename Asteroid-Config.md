@@ -1,4 +1,4 @@
-# Asteroid - Plan - Config
+# Asteroid - Config - Setting
 
 Needs	
 - Ship icon
@@ -14,16 +14,16 @@ Manual interface:
 - Mod
 - Exit
 
-1. Automatic fire and Keyboard control movement.
+Automatic fire and Keyboard control movement.
 		
-2. Game over once get hit. 
+Game over once get hit. 
 - (Alternatively can have HP)
 
-3. Enemy can drop weapon after defeat. 
+Enemy can drop weapon after defeat. 
 - (Alternatively can drop HP recover stuffs and Shield item---Avoid one hit)
 
 
-4. Weapons change fire mod.
+Weapons change fire mod.
 - Default: uzi
 	- straight forward
 	- rapid 1s
@@ -46,7 +46,7 @@ Manual interface:
 	- Low rate drop by units(2%)
 
 
-5. Totally 3 stages, each stage has a boss
+Totally 3 stages, each stage has a boss
 - Stage 1:
 	- unit hp: 1
 	- boss hp: 50
@@ -65,7 +65,7 @@ Manual interface:
 	- fast speed
 	- show up till 100 units kill
 
-6. Infinity mode(Alternative)
+Infinity mode(Alternative)
 - Stage 1:
 	- unit 1: 1 credit
 	- boss 1: 20 credits
