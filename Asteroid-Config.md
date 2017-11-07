@@ -1,7 +1,7 @@
 # Asteroid - Config - Setting
 
 Needs	
-- Ship icon <font color="red">(Must have)</font>
+- Ship icon (Must have)
 - Unit icon (Must have)
 - Boss icon (Must have)
 - Explosion image (Must have)
@@ -76,3 +76,31 @@ Needs
 	- unit 3: 3 credits
 	- boss 3: 100 credits
 - Record scores
+
+# To do list(Must have)
+```diff
+Feature
+- Ship icon
+- Unit icon
+- Boss icon
+- Explosion image
+- Weapon icon
+
+UI
+- Start/restart
+- Exit
+
+Weapon
+- Default: uzi
+	- straight forward
+	- rapid 1s
+	- demage 2
+
+Stage
+- Stage 1:
+	- unit hp: 1
+	- boss hp: 50
+	- slow speed
+	- show up till 20 units kill
+
+```
