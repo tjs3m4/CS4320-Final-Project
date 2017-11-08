@@ -42,3 +42,4 @@
 ## Summary of how classes interact
 	* The Controller controls a player's ship (which is of type AdvancedShip).
 	* An Advanced ship has a Weapon which has Bullets to shoot.
+	* Basic enemies are of type Ship and DO NOT have a Weapon
