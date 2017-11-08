@@ -1,12 +1,15 @@
 # Files
 	* game.py
-		Main game file, initializes the window, data structure the game needs to run, and  contains the main game logic loop.
+		Main game file, initializes the window, data structure the game needs to run, and 
+		contains the main game logic loop.
 
 	* controller.py
-		Contains the Controller class that handles user input, controls the player ship, and  handles navigation for the menus.
+		Contains the Controller class that handles user input, controls the player ship, and 
+		handles navigation for the menus.
 
 	* ship.py
-		Contains the classes that define what a Ship and AdvancedShip are, as well as  their functions.
+		Contains the classes that define what a Ship and AdvancedShip are, as well as 
+		their functions.
 
 	* weapon.py
 		Contains the Weapon class that defines what a weapon is.
