@@ -9,7 +9,8 @@ class GameState(Enum):
 	PAUSE_MENU = 1
 
 # initialize screen and framerate
-screen = pygame.display.set_mode((800,800), pygame.DOUBLEBUF)
+screenSize = (800, 800)
+screen = pygame.display.set_mode(screenSize, pygame.DOUBLEBUF)
 pygame.display.set_caption("") # sets the text on the top of the window
 
 clock = pygame.time.Clock()
@@ -27,13 +28,18 @@ state = GameState.MAIN_MENU
 
 exit = False
 while (not exit):
-	# check for user inputs and exit game if requested by user
-	exit = control.handleEvent()
-
-	# update game logic
-
-
-	# update graphics on the screen to reflect the state of the game
+	# time based loop
 	
 
+	# check for user inputs and exit game if requested by user
+	exit = control.handleInputs(state)
+
+	# update game logic
+	control.setShipAngle()
+	control.player.rotate()
+	control.player.move()
+
+	# update graphics on the screen to reflect the state of the game	
+	screen.fill((0,0,0))
+	screen.blit(control.player.texture, control.player.sprite)
 	pygame.display.flip() # draw to the screen
