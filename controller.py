@@ -23,6 +23,8 @@ class Controller:
 
 	# returns True or False, True if game is to exit, False if not
 	def handleInputs(self, state):
+		# to be sure the ship angle is constantly looking at the mouse cursor
+		self.setShipAngle()
 		
 		(m1,m2,m3) = pygame.mouse.get_pressed() # right mouse button = m3, left mouse button = m1, middle mouse = m2
 		if m3 == True: # if the right mouse button is held down

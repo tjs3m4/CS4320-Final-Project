@@ -1,7 +1,8 @@
 import weapon
 import pygame
+import logicHandler
 
-# basic small enemy ships will be of this type
+# Base class for all ships
 class Ship:
 
 	def __init__(self, image, x , y, health):
@@ -18,8 +19,8 @@ class Ship:
 	# accelerates the ship by increasing its velocity
 	def accelerate(self):
 		pos = pygame.mouse.get_pos()
-		self.velX += ((pos[0] - self.x) * 0.5) / 600000
-		self.velY += ((pos[1] - self.y) * 0.5) / 600000
+		self.velX += ((pos[0] - self.x) * 0.5) / 8300
+		self.velY += ((pos[1] - self.y) * 0.5) / 8300
 		# TODO: draw burner image
 
 	# moves the ship according to its angle and velocity
