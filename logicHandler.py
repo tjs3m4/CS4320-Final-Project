@@ -1,3 +1,5 @@
+import gameState
+
 # class used to keep track of and update the game logic as the game plays
 class LogicHandler():
 
@@ -7,9 +9,10 @@ class LogicHandler():
 
 	# called from the main game loop
 	# calls updateBullets and updateShips
-	def updateGameLogic(self):
-		self.updateShips()
-		self.updateBullets()
+	def updateGameLogic(self, state):
+		if state == gameState.GameState.PLAYING: # PLAYING
+			self.updateShips()
+			self.updateBullets()
 
 	# updates the position of all bullets on the screen
 	def updateBullets(self):

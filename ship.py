@@ -1,6 +1,5 @@
 import weapon
 import pygame
-import logicHandler
 
 # Base class for all ships
 class Ship:
@@ -57,6 +56,9 @@ class EnemyShip(Ship):
 		super(Ship, self).__init__(self, image, x , y, health)
 
 	# other funcitons for enemyShip AI
+	# overrides base ship accelerate()
+	def accelerate(self):
+		return
 
 class AdvancedEnemyShip(AdvancedShip):
 	def __init__(self, image, x , y, health):
