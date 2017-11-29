@@ -69,7 +69,7 @@ bullets = []
 ships = []
 
 # initialize handler for game logic
-logic = logicHandler.LogicHandler(bullets, ships)
+logic = logicHandler.LogicHandler(screenSize, bullets, ships)
 
 # initialize manager for graphics
 graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, mMenu, pMenu)

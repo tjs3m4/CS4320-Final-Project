@@ -13,7 +13,7 @@ class GraphicsManager:
 		self.mMenu = mMenu
 		self.pMenu = pMenu
 
-		self.greyTone = pygame.Surface(screenSize)
+		self.greyTone = pygame.Surface(screenSize) # for greying out the game to better indicate that the game is paused
 		pygame.draw.rect(self.greyTone, (0, 0, 0), (0, 0, screenSize[0], screenSize[1]) , 0)
 		self.greyTone.set_alpha(155)
 
