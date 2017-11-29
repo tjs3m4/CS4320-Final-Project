@@ -2,9 +2,9 @@
 
 ## Player
 * Player moves according to its velocity. The velocity is changed by accelerating in a direction.
- * To slow the ship down, you must accelerate in the opposite direction, or collide with the side of the screen.
+  * To slow the ship down, you must accelerate in the opposite direction, or collide with the side of the screen.
 * The player cannot move outside the bounds of the window.
- * A collision with any side will cause the player to bouce off and lose velocity.
+  * A collision with any side will cause the player to bouce off and lose velocity.
 
 ## Smaller ships
 	Smaller ships come from any side of the screen. A warning is displayed when a ship is coming from a particular side of the screen.
