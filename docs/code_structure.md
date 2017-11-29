@@ -41,3 +41,4 @@ The code is organized according to a model-view-controller architecture.
     
 * The Controller
   * The Controller class checks for player input every iteration of the game loop, and handles the input event accordingly.
+    * Handles both player ship movement and menu navigation.
