@@ -76,8 +76,15 @@ graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, mMenu, pM
 
 # initialize player controller
 control = controller.Controller(graphics.screenSize, mMenu, pMenu)
+# initialize enemy
+# enemyShipImage = pygame.image.load("images/p_ship-red.png")
+# enemy = ship.EnemyShip(enemyShipImage, 10 , 10, 1)
 # add player ship to ship list
 ships.append(control.player)
+# add enemy ship to ship list
+
+ships.append(control.enemys)
+
 
 # initialize clock for timed game loop
 clock = pygame.time.Clock()
