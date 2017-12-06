@@ -30,7 +30,7 @@ def createMainMenu(x, y):
 	# in order to get around this, I am doing something similiar to function pointers in C++
 
 	onClick = playGame # sets False for trigger to exit game
-	buttons["play"] = button.Button("buttons/play_h.png", "buttons/play.png", onClick, x, y)	
+	buttons["play"] = button.Button("buttons/play_h.png", "buttons/play.png", onClick, x, y)
 
 	y += 50
 	onClick = exitGame
@@ -68,16 +68,17 @@ pMenu = createPauseMenu(screenSize[0] / 2, screenSize[1] / 2)
 bullets = []
 ships = []
 
-# initialize handler for game logic
-logic = logicHandler.LogicHandler(screenSize, bullets, ships)
+# initialize player controller
+control = controller.Controller(screenSize, mMenu, pMenu)
+# add player ship to ship list
+ships.append(control.player)
 
 # initialize manager for graphics
 graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, mMenu, pMenu)
 
-# initialize player controller
-control = controller.Controller(graphics.screenSize, mMenu, pMenu)
-# add player ship to ship list
-ships.append(control.player)
+
+# initialize handler for game logic
+logic = logicHandler.LogicHandler(screenSize, bullets, ships)
 
 # initialize clock for timed game loop
 clock = pygame.time.Clock()
