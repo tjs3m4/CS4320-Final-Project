@@ -9,8 +9,7 @@ import gameState
 
 class Controller:
 	def __init__(self, screenSize, mMenu, pMenu):
-		playerShipImage = pygame.image.load("images/p_ship.png")		
-		screenSize = pygame.display.get_surface().get_size()
+		playerShipImage = pygame.image.load("images/p_ship.png")
 		self.player = ship.AdvancedShip(playerShipImage, screenSize[0] / 2, screenSize[1] / 2, 3)
 
 		self.mMenu = mMenu
