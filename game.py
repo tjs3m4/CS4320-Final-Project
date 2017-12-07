@@ -6,6 +6,7 @@ import logicHandler
 import graphicsManager
 import gameState
 import button
+import weapon
 
 # FUNCTIONS FOR CREATING THE MENUS
 # --------------------------------
@@ -67,18 +68,17 @@ pMenu = createPauseMenu(screenSize[0] / 2, screenSize[1] / 2)
 # list of ships and on-screen projectiles for game logic
 bullets = []
 ships = []
-
+weapons = []
 # initialize player controller
 control = controller.Controller(screenSize, mMenu, pMenu)
 # add player ship to ship list
 ships.append(control.player)
 
 # initialize manager for graphics
-graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, mMenu, pMenu)
-
+graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, weapons, mMenu, pMenu)
 
 # initialize handler for game logic
-logic = logicHandler.LogicHandler(screenSize, bullets, ships)
+logic = logicHandler.LogicHandler(screenSize, bullets, ships, weapons)
 
 # initialize clock for timed game loop
 clock = pygame.time.Clock()

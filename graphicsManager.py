@@ -3,13 +3,14 @@ import pygame
 import gameState
 
 class GraphicsManager:
-	def __init__(self, screenSize, bullets, ships, mMenu, pMenu):
+	def __init__(self, screenSize, bullets, ships, weapons, mMenu, pMenu):
 		self.screenSize = screenSize
 		self.screen = pygame.display.set_mode(self.screenSize, pygame.DOUBLEBUF)
 		pygame.display.set_caption("") # sets the text on the top of the window
 		self.renderSurface = pygame.Surface(screenSize) # draw any object to this surface, then this surface to the screen at end of draw loop. This helps prevent flickering
 		self.bullets = bullets
 		self.ships = ships
+		self.weapons = weapons
 
 		self.animationTimer = 5 # how many iterations of the game loop before the animation in played
 		self.tickCount = 0 # the game loop counter 
@@ -41,6 +42,9 @@ class GraphicsManager:
 				if (self.tickCount >= self.animationTimer):
 					enemy.animate()
 				self.renderSurface.blit(enemy.texture, enemy.sprite) # draw all enemy ships
+
+			for weapon in self.weapons:
+				self.renderSurface.blit(weapon.texture, weapon.sprite) # draw weapons
 
 			if (self.tickCount >= self.animationTimer): # reset count for animation
 				self.tickCount = 0

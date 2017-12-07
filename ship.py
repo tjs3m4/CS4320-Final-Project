@@ -36,7 +36,7 @@ class Ship:
 		self.velX += ((pos[0] - self.x) * 0.5) / 8300
 		self.velY += ((pos[1] - self.y) * 0.5) / 8300
 		# TODO: draw burner image
-
+    
 	# moves the ship according to its angle and velocity
 	def move(self):
 		self.x += self.velX
@@ -56,7 +56,7 @@ class Ship:
 class AdvancedShip(Ship):
 	
 	def __init__(self, image, animation, x , y, health):
-		self.weapon = weapon.Weapon()
+		self.weapon = weapon.Weapon(image, x, y, health)
 		super(AdvancedShip, self).__init__(image, animation, x, y, health)
 
 	def fire(self):

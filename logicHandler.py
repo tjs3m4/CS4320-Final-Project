@@ -1,32 +1,42 @@
 import gameState
 from random import randint
 import ship
+import weapon
 import pygame
 
 # class used to keep track of and update the game logic as the game plays
 class LogicHandler():
 
-	def __init__(self, screenSize, bullets, ships):
+	def __init__(self, screenSize, bullets, ships, weapons):
 		self.bullets = bullets
 		self.ships = ships
+		self.weapons = weapons
 		self.screenSize = screenSize
 		self.spawnTick = 300 # how many iterations of the game loop before we spawn a new enemy ship. higher value = slower ship spawning
 		self.tickCount = 0 # the game loop counter to see if it is time to spawn an enemy
+		self.tickCount1 = 0 # the game loop counter to see if it is time to spawn an enemy
 		self.enemyShipImage = pygame.image.load("images/enemy_plane.png")
 		self.enemyAnimation = pygame.image.load("images/enemy_planefly.png")
+		self.weaponImage = pygame.image.load("images/weapon_supply.png")
 		self.player = ships.pop(0) # get player ship
 
 	# called from the main game loop
 	# calls updateBullets and updateShips
 	def updateGameLogic(self, state):
 		self.tickCount += 1
+		self.tickCount1 += 0.25
 		if state == gameState.GameState.PLAYING: # PLAYING
 			self.updateShips()
 			self.updateBullets()
+			self.updateWeapon()
 
 			if self.tickCount >= self.spawnTick:
 				self.tickCount = 0
 				self.spawnEnemyShip()
+
+			if self.tickCount1 >= self.spawnTick:
+				self.tickCount1 = 0
+				self.spawnWeapon()
 
 	def spawnEnemyShip(self):
 		side = randint(0,3)
@@ -49,6 +59,15 @@ class LogicHandler():
 			locX = randint(-200, self.screenSize[0] + 200) # (-200, 1224)
 			locY = randint(-250, -50) # (-250, -50)
 			self.ships.append(ship.EnemyShip(self.enemyShipImage, self.enemyAnimation, locX, locY, 1, self.player))
+
+	def spawnWeapon(self):
+		locX = randint(100, 950)
+		locY = 0
+		self.weapons.append(weapon.Weapon(self.weaponImage, locX, locY, 1))		
+
+	def updateWeapon(self):
+		for weapon in self.weapons:
+			weapon.move()
 
 	# updates the position of all bullets on the screen
 	def updateBullets(self):
