@@ -1,6 +1,8 @@
 # the class responsible for managing the screen and drawing to it
 import pygame
+# from pygame.locals import *
 import gameState
+# import os
 
 class GraphicsManager:
 	def __init__(self, screenSize, bullets, ships, weapons, mMenu, pMenu):
@@ -11,10 +13,11 @@ class GraphicsManager:
 		self.bullets = bullets
 		self.ships = ships
 		self.weapons = weapons
-
 		self.animationTimer = 5 # how many iterations of the game loop before the animation in played
 		self.tickCount = 0 # the game loop counter 
-
+		
+		self.bkgd = pygame.image.load("images/background.png").convert()
+		# bkgd = pygame.transform.scale(bkgd, (1280, 800))
 		self.mMenu = mMenu
 		self.pMenu = pMenu
 
@@ -34,6 +37,7 @@ class GraphicsManager:
 			self.displayMainMenu()
 
 		else:
+			self.renderSurface.blit(self.bkgd,(0,0))# draw background image
 			if (self.tickCount >= self.animationTimer):
 				self.player.animate()
 			self.renderSurface.blit(self.player.texture, self.player.sprite) # draw player
@@ -52,7 +56,6 @@ class GraphicsManager:
 			if state == gameState.GameState.PAUSE_MENU: # PAUSE_MENU
 				self.renderSurface.blit(self.greyTone, (0, 0)) # draw grey undertone to dull game objects
 				self.displayPauseMenu()
-
 		self.screen.blit(self.renderSurface, (0, 0)) # draw surface to the screen
 		pygame.display.flip() # display newly rendered screen
 
