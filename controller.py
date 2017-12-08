@@ -9,12 +9,9 @@ import gameState
 
 class Controller:
 	def __init__(self, screenSize, mMenu, pMenu):
-		playerShipImage = pygame.image.load("images/p_ship.png")		
-		screenSize = pygame.display.get_surface().get_size()
-		self.player = ship.AdvancedShip(playerShipImage, screenSize[0] / 2, screenSize[1] / 2, 3)
-
-		enemyShipImage = pygame.image.load("images/p_ship-red.png")		
-		self.enemys = ship.AdvancedShip(enemyShipImage, screenSize[0] / 3, screenSize[1] / 3, 1)
+		playerShipImage = pygame.image.load("images/myplane2_1.png")
+		playerAnimation = pygame.image.load("images/myplane2fly.png")
+		self.player = ship.AdvancedShip(playerShipImage, playerAnimation, screenSize[0] / 2, screenSize[1] / 2, 3)
 
 		self.mMenu = mMenu
 		self.pMenu = pMenu
@@ -34,7 +31,6 @@ class Controller:
 
 		if m3 == True and state == gameState.GameState.PLAYING: # if the right mouse button is held down
 			self.player.accelerate()
-			self.enemys.move()
 
 		if m1 == True and state == gameState.GameState.PLAYING: # if the left mouse button is held down
 			self.player.fire()
@@ -66,7 +62,6 @@ class Controller:
 		mousePos = pygame.mouse.get_pos()
 		# atan2 is used when the signs of both x and y are known
 		self.player.angle = (-1 * degrees(atan2(mousePos[1] - self.player.y, mousePos[0] - self.player.x))) - 90
-		self.enemys.angle = degrees(atan2(self.player.y,self.player.x))
 
 	def setActiveMenuBtn(self, state):
 		mousePos = pygame.mouse.get_pos()

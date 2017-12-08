@@ -6,6 +6,7 @@ import logicHandler
 import graphicsManager
 import gameState
 import button
+import weapon
 
 # FUNCTIONS FOR CREATING THE MENUS
 # --------------------------------
@@ -30,7 +31,7 @@ def createMainMenu(x, y):
 	# in order to get around this, I am doing something similiar to function pointers in C++
 
 	onClick = playGame # sets False for trigger to exit game
-	buttons["play"] = button.Button("buttons/play_h.png", "buttons/play.png", onClick, x, y)	
+	buttons["play"] = button.Button("buttons/play_h.png", "buttons/play.png", onClick, x, y)
 
 	y += 50
 	onClick = exitGame
@@ -67,24 +68,17 @@ pMenu = createPauseMenu(screenSize[0] / 2, screenSize[1] / 2)
 # list of ships and on-screen projectiles for game logic
 bullets = []
 ships = []
-
-# initialize handler for game logic
-logic = logicHandler.LogicHandler(screenSize, bullets, ships)
-
-# initialize manager for graphics
-graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, mMenu, pMenu)
-
+weapons = []
 # initialize player controller
-control = controller.Controller(graphics.screenSize, mMenu, pMenu)
-# initialize enemy
-# enemyShipImage = pygame.image.load("images/p_ship-red.png")
-# enemy = ship.EnemyShip(enemyShipImage, 10 , 10, 1)
+control = controller.Controller(screenSize, mMenu, pMenu)
 # add player ship to ship list
 ships.append(control.player)
-# add enemy ship to ship list
 
-ships.append(control.enemys)
+# initialize manager for graphics
+graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, weapons, mMenu, pMenu)
 
+# initialize handler for game logic
+logic = logicHandler.LogicHandler(screenSize, bullets, ships, weapons)
 
 # initialize clock for timed game loop
 clock = pygame.time.Clock()
@@ -100,7 +94,6 @@ while (not state == gameState.GameState.GAME_EXIT):
 
 	# check for user inputs and exit game if requested by user
 	state = control.handleInputs(state)
-
 	# update game logic
 	logic.updateGameLogic(state)
 
