@@ -72,9 +72,11 @@ class LogicHandler():
 
 	# updates the position of all bullets on the screen
 	def updateBullets(self):
-	    for bullet in self.bullets:
-		bullet.position += bullet.velocity
-		bullet.rect.center = bullet.pos
+	    for event in pygame.event.get():
+		if event.type == pg.MOUSEBUTTONDOWN:
+		   for bullet in self.bullets:
+		       bullet.position += bullet.velocity
+		       bullet.rect.center = bullet.pos
 		
 
 	# updates the position of all ships on the screen and checks for collision with a bullet or another ship
