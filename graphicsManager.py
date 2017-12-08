@@ -46,7 +46,13 @@ class GraphicsManager:
 			self.y += 1 # scrolling down
 			self.y1+= 1 # scrolling down
 			# Infinity srolling down background
-			# if or while loop to make y and y1 equal to -800 when they hit 800 
+			# if or while loop to make y and y1 equal to -800 when they hit 800
+			if (self.y == 800):
+				self.y= -800
+
+			if (self.y1 == 800):
+				self.y1= -800
+
 			if (self.tickCount >= self.animationTimer):
 				self.player.animate()
 			self.renderSurface.blit(self.player.texture, self.player.sprite) # draw player
