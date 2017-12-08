@@ -1,6 +1,6 @@
 import math
 from pygame.math import Vector2
-import pygame as pg
+import pygame
 
 
 
@@ -17,9 +17,9 @@ class Bullet:
 	    #create another vector and rotate this vector as well
 	    vector = Vector2(50,0).rotate(angle)
 	    #add the rotated vector to the position vector
-	    self.pos = Vector2(pos) + offset
+	    self.pos = Vector2(pos) + vector
 	    #Rotate the velocity vector (9,0) by the angle.
 	    self.velocity = Vector(9, 0).rotate(angle)
-       def update(self)
-           self.pos += self.velocity
-           self.sprite.center = self.pos
+       def  update(self)
+            self.pos += self.velocity
+            self.sprite.center = self.pos
