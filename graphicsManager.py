@@ -16,8 +16,12 @@ class GraphicsManager:
 		self.animationTimer = 5 # how many iterations of the game loop before the animation in played
 		self.tickCount = 0 # the game loop counter 
 		
-		self.bkgd = pygame.image.load("images/background.png").convert()
-		# bkgd = pygame.transform.scale(bkgd, (1280, 800))
+		self.bkgd = pygame.image.load("images/background.png").convert() #background image 1
+		self.bkgd1 = pygame.image.load("images/background.png").convert()#background image 2
+		
+		self.y = 0  # y for background 1
+		self.y1= -800 # y1 for background 2 outside screen
+		
 		self.mMenu = mMenu
 		self.pMenu = pMenu
 
@@ -37,7 +41,18 @@ class GraphicsManager:
 			self.displayMainMenu()
 
 		else:
-			self.renderSurface.blit(self.bkgd,(0,0))# draw background image
+			self.renderSurface.blit(self.bkgd,(0,self.y))# draw background image 1
+			self.renderSurface.blit(self.bkgd1,(0,self.y1))# draw background image 2
+			self.y += 1 # scrolling down
+			self.y1+= 1 # scrolling down
+			# Infinity srolling down background
+			# if or while loop to make y and y1 equal to -800 when they hit 800
+			if (self.y == 800):
+				self.y= -800
+
+			if (self.y1 == 800):
+				self.y1= -800
+
 			if (self.tickCount >= self.animationTimer):
 				self.player.animate()
 			self.renderSurface.blit(self.player.texture, self.player.sprite) # draw player
