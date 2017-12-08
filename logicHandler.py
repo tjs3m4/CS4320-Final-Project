@@ -3,6 +3,7 @@ from random import randint
 import ship
 import weapon
 import pygame
+import bullet
 
 # class used to keep track of and update the game logic as the game plays
 class LogicHandler():
@@ -71,8 +72,10 @@ class LogicHandler():
 
 	# updates the position of all bullets on the screen
 	def updateBullets(self):
-
-		return
+	    for bullet in self.bullets:
+		bullet.position += bullet.velocity
+		bullet.rect.center = bullet.pos
+		
 
 	# updates the position of all ships on the screen and checks for collision with a bullet or another ship
 	def updateShips(self):
