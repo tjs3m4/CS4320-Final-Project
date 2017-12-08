@@ -8,6 +8,8 @@ import pygame
 
 class Bullet:
 	def __init__(self, image, x, y, pos, angle):
+	    x, y = Vector2(pg.mouse.get_pos()) - cannon.center
+            angle = math.degrees(math.atan2(y, x))
 	    self.image =  pygame.transform.rotate(image, -angle)
 	    self.sprite = self.image.get_rect(center = pos)
 	    #Apply offset to start position,
