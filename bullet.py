@@ -1,8 +1,22 @@
+import math
+from pygame.math import Vector2
+import pygame as pg
+
+pg.init()
+BULLET_IMAGE = pg.Surface((20, 11), pg.SRCALPHA)
+pg.draw.polygon(BULLET_IMAGE, pg.Color('grey11'), [(0, 0), (20, 5), (0, 11)])
+
+
+
+
 class Bullet:
-	def __init__(self, x, y, velX, velY, image):
-		self.velX = 0 # speed of ship in the X direction, used to update position on screen every iteration of game loop
-		self.velY = 0 # speed of the ship in the Y direction
-		self.angle = 0 # an angle, represents the direction the ship is facing
-		self.damage = 0 # value representing the amount of damage the bullet will do
-		self.texture = 0 # image represtenting the bullet
-		self.sprite = 0 # the rectangle the bullet is drawn to
+	def __init__(self, pos, angle):
+	    self.image = pg.transform.rotate(BULLET_IMAGE, -angle)
+	    self.rect = self.image.get_rect(center=pos)
+	    #Apply offset to start position,
+	    #create another vector and rotate this vector as well
+	    vector = Vector2(50,0).rotate(angle)
+	    #add the rotated vector to the position vector
+	    self.pos = Vector2(pos) + offset
+	    #Rotate the velocity vector (9,0) by the angle.
+	    self.velocity = Vector(9, 0).rotate(angle)
