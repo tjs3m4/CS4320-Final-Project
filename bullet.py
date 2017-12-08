@@ -8,11 +8,8 @@ import pygame
 
 class Bullet:
 	def __init__(self, image, x, y, pos, angle):
-	    self.x = x
-	    self.y = y
-	    self.masterTexture = image
-	    self.texture = self. masterTexture
-	    self.sprite = image.get_rect(center = (self.x, self.y))
+	    self.image =  pygame.transform.rotate(image, -angle)
+	    self.sprite = self.image.get_rect(center = pos)
 	    #Apply offset to start position,
 	    #create another vector and rotate this vector as well
 	    vector = Vector2(50,0).rotate(angle)
