@@ -21,7 +21,7 @@
 	        * Contain displaying the mainMenu, changes of the screen, the background images as the player's flight moves around
 		* Update the game state whenever the player chooses starting the game or pause it
 		* Contain scrolling down the wallpaper
-	* 
+	
 ## Classes and their Functionality
 	* Controller
 		* Handles user input events that move the ship around the screen, and events that navigate the menus.
