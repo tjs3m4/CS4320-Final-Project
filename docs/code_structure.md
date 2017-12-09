@@ -13,7 +13,15 @@
 
 	* bullet.py
 		Contains the Bullet class that defines what a bullet is.
-
+        * Logichandler.py
+	        * Class used to keep track of and update the game logic as the game plays.
+		* Contains updating the weapons, bullets, ships
+		
+	* Graphichandler.py
+	        * Contain displaying the mainMenu, changes of the screen, the background images as the player's flight moves around
+		* Update the game state whenever the player chooses starting the game or pause it
+		* Contain scrolling down the wallpaper
+	* 
 ## Classes and their Functionality
 	* Controller
 		* Handles user input events that move the ship around the screen, and events that navigate the menus.
@@ -35,7 +43,18 @@
 
 	* Bullet
 		* Contains the data necessary to represent a bullet.
-
+	* GraphicsManager
+	        * Manage the scrolling of wallpaper, the main menu, which contains "play" and "quit"
+	* GameState
+	        * Contains the enum value corresponding to the state of the game
+	* EnemyShip:
+	        * Contains the image, the health as the attributes of enemyship, and "accelerate, move, rotate" as the behavior of the                   * enemy ship
+	* AdvancedEnemyShip:
+	        * The boss ship
+	
+	
+	
 ## Summary of how classes interact
 	* The Controller controls a player's ship (which is of type AdvancedShip).
 	* An Advanced ship has a Weapon which has Bullets to shoot.
+	
