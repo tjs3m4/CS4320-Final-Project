@@ -1,24 +1,18 @@
-import math
-from pygame.math import Vector2
-import pygame
-
-
-
-
+import ship
 
 class Bullet:
-	def __init__(self, image, x, y, pos, angle):
-	    x, y = Vector2(pg.mouse.get_pos()) - cannon.center
-            angle = math.degrees(math.atan2(y, x))
-	    self.image =  pygame.transform.rotate(image, -angle)
-	    self.sprite = self.image.get_rect(center = pos)
-	    #Apply offset to start position,
-	    #create another vector and rotate this vector as well
-	    vector = Vector2(50,0).rotate(angle)
-	    #add the rotated vector to the position vector
-	    self.pos = Vector2(pos) + vector
-	    #Rotate the velocity vector (9,0) by the angle.
-	    self.velocity = Vector(9, 0).rotate(angle)
-       def  update(self)
-            self.pos += self.velocity
-            self.sprite.center = self.pos
+	def __init__(self, image, x, y, health, playerShip):
+		self.x = x # x part of coordinate on screen
+		self.y = y # y part of coordinate on screen
+		self.health = 0
+		self.playerShip = ship.playerShip
+		self.masterTexture = image # the master copy of the image, used to refresh the texture so that it doesn't get distorted
+		self.texture = self.masterTexture # manipulated image used to draw to the screen
+		self.sprite = image.get_rect(center = (self.x, self.y)) # the rectangle the bullet is drawn to
+
+	def move(self):
+		#playervelX = self.playerShip.velx
+		#playervelY = self.playerShip.vely	
+		self.x += 0
+		self.y += 10
+		self.sprite = self.texture.get_rect(center=(self.x, self.y))
