@@ -6,3 +6,4 @@ class GameState(Enum):
 	PAUSE_MENU = 2
 	GAME_EXIT = 3
 	GAME_OVER = 4
+	GAME_RESET = 5

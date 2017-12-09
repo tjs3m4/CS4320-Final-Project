@@ -11,5 +11,5 @@ class Weapon():
 
 	def move(self):
 		self.x += 0
-		self.y += 3
+		self.y += 1
 		self.sprite = self.texture.get_rect(center=(self.x, self.y))

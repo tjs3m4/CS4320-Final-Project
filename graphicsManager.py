@@ -3,7 +3,7 @@ import pygame
 import gameState
 
 class GraphicsManager:
-	def __init__(self, screenSize, bullets, ships, weapons, mMenu, pMenu):
+	def __init__(self, screenSize, bullets, ships, weapons, mMenu, pMenu, gameOverScreen):
 		self.screenSize = screenSize
 		self.screen = pygame.display.set_mode(self.screenSize, pygame.DOUBLEBUF)
 		pygame.display.set_caption("") # sets the text on the top of the window
@@ -23,11 +23,16 @@ class GraphicsManager:
 
 		self.mMenu = mMenu
 		self.pMenu = pMenu
+		self.gameOverScreen = gameOverScreen
 
 		self.greyTone = pygame.Surface(screenSize) # for greying out the game to better indicate that the game is paused
 		pygame.draw.rect(self.greyTone, (0, 0, 0), (0, 0, screenSize[0], screenSize[1]) , 0)
 		self.greyTone.set_alpha(155)
 		self.player = ships[0]
+
+		pygame.font.init() # initalize font module
+		self.HUD = pygame.Surface((100, 100))
+		self.font = pygame.font.SysFont('Times New Roman', 72)
 
 	def updateGraphics(self, state):
 		self.tickCount += 1;
@@ -36,10 +41,15 @@ class GraphicsManager:
 		if state == gameState.GameState.GAME_EXIT: # don't draw graphics on game quit event
 			return
 
-		if state == gameState.GameState.MAIN_MENU: # MAIN_MENU
+		elif state == gameState.GameState.GAME_OVER: # game over
+			self.displayGameOverScreen()
+
+		elif state == gameState.GameState.MAIN_MENU: # MAIN_MENU
 			self.displayMainMenu()
 
 		else:
+			healthDisplay = self.font.render(str(self.player.health), False, (255,255,255))
+
 			self.renderSurface.blit(self.bkgd,(0,self.y))# draw background image 1
 			self.renderSurface.blit(self.bkgd1,(0,self.y1))# draw background image 2
 			self.y += 1 # scrolling down
@@ -65,7 +75,7 @@ class GraphicsManager:
 				self.renderSurface.blit(weapon.texture, weapon.sprite) # draw weapons
 
 			for bullet in self.bullets:
-				self.renderSurface.blit(bullet.texture, bullet.sprite) # draw weapons
+				self.renderSurface.blit(bullet.texture, bullet.sprite) # draw bullets
 
 			if (self.tickCount >= self.animationTimer): # reset count for animation
 				self.tickCount = 0
@@ -73,6 +83,8 @@ class GraphicsManager:
 			if state == gameState.GameState.PAUSE_MENU: # PAUSE_MENU
 				self.renderSurface.blit(self.greyTone, (0, 0)) # draw grey undertone to dull game objects
 				self.displayPauseMenu()
+
+			self.renderSurface.blit(healthDisplay, (0,self.screenSize[1] - 75)) # display health
 
 		self.screen.blit(self.renderSurface, (0, 0)) # draw surface to the screen
 		pygame.display.flip() # display newly rendered screen
@@ -85,6 +97,11 @@ class GraphicsManager:
 
 	def displayPauseMenu(self):
 		for key, btn in self.pMenu.items(): # loop to iterate over dictionary
+			self.renderSurface.blit(btn.activeTexture, btn.sprite)
+		return
+
+	def displayGameOverScreen(self):
+		for key, btn in self.gameOverScreen.items(): # loop to iterate over dictionary
 			self.renderSurface.blit(btn.activeTexture, btn.sprite)
 		return
 

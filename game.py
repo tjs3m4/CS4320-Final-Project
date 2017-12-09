@@ -15,13 +15,16 @@ def continueClk(state):
 	return gameState.GameState.PLAYING
 
 def exitGame(state):
-	if state == gameState.GameState.PAUSE_MENU:
+	if state == gameState.GameState.PAUSE_MENU or state == gameState.GameState.GAME_OVER:
 		return gameState.GameState.MAIN_MENU
-
-	return gameState.GameState.GAME_EXIT
+	else:
+		return gameState.GameState.GAME_EXIT
 
 def playGame(state):
-	return gameState.GameState.PLAYING
+	return gameState.GameState.GAME_RESET
+
+def gameOver(state): # this function doesn't really do anything, Its just here to make the Game Over text display has no effect when clicked on
+	return gameState.GameState.GAME_OVER
 
 def createMainMenu(x, y):
 	y -= 50
@@ -51,6 +54,20 @@ def createPauseMenu(x, y):
 	buttons["quit"] = button.Button("buttons/quit_h.png", "buttons/quit.png", onClick, x, y)
 
 	return buttons
+
+def createGameOverScreen(x, y):
+	y -= 50
+	buttons = {}
+
+	onClick = gameOver
+	buttons["game_over"] = button.Button("buttons/game_over.png", "buttons/game_over.png", onClick, x, y)
+
+	y += 50
+	onClick = exitGame
+	buttons["quit"] = button.Button("buttons/quit_h.png", "buttons/quit.png", onClick, x, y)
+
+	return buttons
+
 # --------------------------------
 
 # INITIALIZERS FOR GAME AND GAME OBJECTS
@@ -64,21 +81,24 @@ screenSize = (1024, 800)
 # initalize menus and have options shown at center screen
 mMenu = createMainMenu(screenSize[0] / 2, screenSize[1] / 2)
 pMenu = createPauseMenu(screenSize[0] / 2, screenSize[1] / 2)
+gameOverScreen = createGameOverScreen(screenSize[0] / 2, screenSize[1] / 2)
 
 # list of ships and on-screen projectiles for game logic
 bullets = []
 ships = []
 weapons = []
+col_ships = []
+
 # initialize player controller
-control = controller.Controller(screenSize, mMenu, pMenu)
+control = controller.Controller(screenSize, mMenu, pMenu, gameOverScreen)
 # add player ship to ship list
 ships.append(control.player)
 
 # initialize manager for graphics
-graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, weapons, mMenu, pMenu)
+graphics = graphicsManager.GraphicsManager(screenSize, bullets, ships, weapons, mMenu, pMenu, gameOverScreen)
 
 # initialize handler for game logic
-logic = logicHandler.LogicHandler(screenSize, bullets, ships, weapons)
+logic = logicHandler.LogicHandler(screenSize, bullets, ships, weapons, col_ships)
 
 # initialize clock for timed game loop
 clock = pygame.time.Clock()
@@ -96,7 +116,7 @@ while (not state == gameState.GameState.GAME_EXIT):
 	state = control.handleInputs(state)
 
 	# update game logic
-	logic.updateGameLogic(state)
+	state = logic.updateGameLogic(state)
 
 	# update graphics on the screen to reflect the state of the game
 	graphics.updateGraphics(state)

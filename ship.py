@@ -1,12 +1,7 @@
 import weapon
 import pygame
-import math
 from math import degrees
-from math import atan2 
-from math import sin
-from math import cos
-
-
+from math import atan2
 
 # Base class for all ships
 class Ship:
@@ -17,7 +12,7 @@ class Ship:
 		self.velX = 0 # speed of ship in the X direction, used to update position on screen every iteration of game loop
 		self.velY = 0 # speed of the ship in the Y direction
 		self.angle = 0 # an angle, represents the direction the ship is facing
-		self.health = 0 # value representing the amount of health the ship has remaining
+		self.health = health # value representing the amount of health the ship has remaining
 		self.masterTexture = image # the master copy of the image, used to refresh the texture so that it doesn't get distorted
 		self.texture = self.masterTexture # manipulated image used to draw to the screen
 		self.sprite = image.get_rect(center = (self.x, self.y)) # the rectangle which the image is drawn onto
@@ -25,6 +20,15 @@ class Ship:
 		self.animation2 = image
 		self.animation = animation
 		self.animation_state = False # False: image is off, True: image is on
+		self.createHitbox()
+
+	def createHitbox(self):
+		self.hitbox = pygame.Rect(0,0,0,0)
+		self.hitbox.topleft = self.sprite.topleft
+		self.hitbox.width = 27;
+		self.hitbox.height = 20;
+		self.hitbox.center = (self.x, self.y)
+
 
 	def animate(self):
 		if self.animation_state == False:
@@ -47,6 +51,8 @@ class Ship:
 		self.x += self.velX
 		self.y += self.velY
 		self.sprite = self.texture.get_rect(center=(self.x, self.y))
+		self.createHitbox()
+
 
 	# when we want to rotate the ship, we use the pygame.transform.rotate() funciton.
 	# it creates a new image from a given image, therefore, we give it the masterTexture and assign the result to the texture
@@ -63,6 +69,15 @@ class AdvancedShip(Ship):
 	def __init__(self, image, animation, x , y, health):
 		self.weapon = weapon.Weapon(image, x, y, health)
 		super(AdvancedShip, self).__init__(image, animation, x, y, health)
+		# The following values are the ships's initial values
+		# This is so we don't have to change the health value in multiple files.
+		self.initialHealth = health # this is the value the ship's health will be reset to when the game is reset.
+		self.initialPos = (x, y)
+
+	def resetShip(self):
+		self.health = self.initialHealth
+		self.x = self.initialPos[0]
+		self.y = self.initialPos[1]
 
 	def fire(self):
 		# TODO
@@ -90,6 +105,7 @@ class EnemyShip(Ship):
 		self.x += self.velX
 		self.y += self.velY
 		self.sprite = self.texture.get_rect(center=(self.x, self.y))
+		self.createHitbox()
 
 	def rotate(self):
 		playerX = self.playerShip.x
@@ -109,24 +125,23 @@ class Bullet(Ship):
 	def __init__(self, image, animation, x , y, health, playerShip):
 		super(Bullet, self).__init__(image, animation, x , y, health)
 		self.playerShip = playerShip
+		self.angle = playerShip.angle
+		self.rotate()
 
-	# other funcitons for enemyShip AI
-	# overrides base ship accelerate()
+		pos = pygame.mouse.get_pos()
+		self.velX = ((pos[0] - self.x) * 0.05) / 1.5
+		self.velY = ((pos[1] - self.y) * 0.05) / 1.5
+
+
 	def move(self):
-			if (self.x >= 0.9 * self.playerShip.x) and (self.x <= 1.1 * self.playerShip.x) and (self.y >= 0.9 * self.playerShip.y) and (self.y <= 1.1 * self.playerShip.y):
-				pos = pygame.mouse.get_pos()
-				self.angle = degrees(atan2(400 - pos[1], pos[0] - 512)) - 90  #self.playerShip.angle
-				self.velX = (pos[0] - 512) / 50
-				self.velY = (pos[1] - 400) / 50
-				self.x += (pos[0] - 512) / 10
-				self.y += (pos[1] - 400) / 10
-				self.texture = pygame.transform.rotate(self.masterTexture, self.angle)
-				self.sprite = self.texture.get_rect(center=(self.x, self.y))
-			elif (self.x != self.playerShip.x) and (self.y != self.playerShip.y):
-				self.x += 2 * self.velX
-				self.y += 2 * self.velY
-				self.texture = pygame.transform.rotate(self.masterTexture, self.angle)
-				self.sprite = self.texture.get_rect(center=(self.x, self.y))
+		self.x += self.velX
+		self.y += self.velY
+		self.sprite = self.texture.get_rect(center=(self.x, self.y))
+		self.createHitbox()
 
-
-
+	def createHitbox(self):
+		self.hitbox = pygame.Rect(0,0,0,0)
+		self.hitbox.topleft = self.sprite.topleft
+		self.hitbox.width = 8;
+		self.hitbox.height = 8;
+		self.hitbox.center = (self.x, self.y)

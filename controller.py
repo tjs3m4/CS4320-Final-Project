@@ -8,13 +8,14 @@ from math import atan2
 import gameState
 
 class Controller:
-	def __init__(self, screenSize, mMenu, pMenu):
+	def __init__(self, screenSize, mMenu, pMenu, gameOverScreen):
 		playerShipImage = pygame.image.load("images/myplane2_1.png")
 		playerAnimation = pygame.image.load("images/myplane2_1.png")
 		self.player = ship.AdvancedShip(playerShipImage, playerAnimation, screenSize[0] / 2, screenSize[1] / 2, 3)
 
 		self.mMenu = mMenu
 		self.pMenu = pMenu
+		self.gameOverScreen = gameOverScreen
 
 	# returns True or False, True if game is to exit, False if not
 	def handleInputs(self, state):
@@ -47,7 +48,7 @@ class Controller:
 						state = gameState.GameState.PLAYING
 
 			# single mouse click is only relevent inside the menus
-			if state == gameState.GameState.PAUSE_MENU or state == gameState.GameState.MAIN_MENU:
+			else:
 				if event.type == pygame.MOUSEBUTTONDOWN: # handle single mouse click
 					state = self.checkMenuBtnClick(state)
 		# ------------------------------------------
@@ -71,8 +72,16 @@ class Controller:
 					btn.hover()
 				else:
 					btn.setInactive()
+
 		elif state == gameState.GameState.MAIN_MENU:			
 			for key, btn in self.mMenu.items(): # loop to iterate over dictionary
+				if btn.sprite.collidepoint(mousePos):
+					btn.hover()
+				else:
+					btn.setInactive()
+
+		elif state == gameState.GameState.GAME_OVER:
+			for key, btn in self.gameOverScreen.items(): # loop to iterate over dictionary
 				if btn.sprite.collidepoint(mousePos):
 					btn.hover()
 				else:
@@ -89,4 +98,10 @@ class Controller:
 			for key, btn in self.mMenu.items(): # loop to iterate over dictionary
 				if btn.sprite.collidepoint(mousePos):
 					state = btn.onClick(state)
+
+		elif state == gameState.GameState.GAME_OVER:
+			for key, btn in self.gameOverScreen.items(): # loop to iterate over dictionary
+				if btn.sprite.collidepoint(mousePos):
+					state = btn.onClick(state)
+
 		return state
