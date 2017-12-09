@@ -1,6 +1,9 @@
 # CS4320-Final-Project
 Final project for CS4320
 
+GROUP MEMBERS
+* Timothy Shea : tjs3m4
+
 Read about how the game works [here](/docs/mechanics.md).
 Controls can be found [here](/docs/controls.md).
 
