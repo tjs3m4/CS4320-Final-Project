@@ -1,5 +1,3 @@
-import bullet
-
 class Weapon():
 	def __init__(self, image, x , y, health):
 		self.x = x # x part of coordinate on screen
