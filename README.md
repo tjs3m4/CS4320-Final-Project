@@ -3,6 +3,7 @@ Final project for CS4320
 
 GROUP MEMBERS
 * Timothy Shea : tjs3m4
+* Shiqi Wang: swz45
 
 Read about how the game works [here](/docs/mechanics.md).
 Controls can be found [here](/docs/controls.md).
