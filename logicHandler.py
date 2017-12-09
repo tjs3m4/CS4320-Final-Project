@@ -3,7 +3,6 @@ from random import randint
 import ship
 import weapon
 import pygame
-import bullet
 
 # class used to keep track of and update the game logic as the game plays
 class LogicHandler():
@@ -15,10 +14,13 @@ class LogicHandler():
 		self.screenSize = screenSize
 		self.spawnTick = 300 # how many iterations of the game loop before we spawn a new enemy ship. higher value = slower ship spawning
 		self.tickCount = 0 # the game loop counter to see if it is time to spawn an enemy
-		self.tickCount1 = 0 # the game loop counter to see if it is time to spawn an enemy
+		self.tickCount1 = 0 # the game loop counter to see if it is time to spawn a weapon
+		self.tickCount2 = 0 # the game loop counter to see if it is time to spawn a bullet
 		self.enemyShipImage = pygame.image.load("images/enemy_plane.png")
 		self.enemyAnimation = pygame.image.load("images/enemy_planefly.png")
 		self.weaponImage = pygame.image.load("images/weapon_supply.png")
+		self.bulletImage = pygame.image.load("images/bullet.png")
+		self.bulletAnimation = pygame.image.load("images/bullet.png")
 		self.player = ships.pop(0) # get player ship
 
 	# called from the main game loop
@@ -26,14 +28,19 @@ class LogicHandler():
 	def updateGameLogic(self, state):
 		self.tickCount += 1
 		self.tickCount1 += 0.25
+		self.tickCount2 += 2
 		if state == gameState.GameState.PLAYING: # PLAYING
 			self.updateShips()
-			self.updateBullets()
 			self.updateWeapon()
+			self.updateBullet()
 
 			if self.tickCount >= self.spawnTick:
 				self.tickCount = 0
 				self.spawnEnemyShip()
+
+			if self.tickCount2 >= self.spawnTick:
+				self.tickCount2 = 0
+				self.spawnBullet()
 
 			if self.tickCount1 >= self.spawnTick:
 				self.tickCount1 = 0
@@ -64,17 +71,21 @@ class LogicHandler():
 	def spawnWeapon(self):
 		locX = randint(100, 950)
 		locY = 0
-		self.weapons.append(weapon.Weapon(self.weaponImage, locX, locY, 1))		
+		self.weapons.append(weapon.Weapon(self.weaponImage, locX, locY, 1))	
+
+	def spawnBullet(self):
+		locX = self.player.x
+		locY = self.player.y
+		self.bullets.append(ship.Bullet(self.bulletImage, self.bulletAnimation, locX, locY, 1, self.player))		
 
 	def updateWeapon(self):
 		for weapon in self.weapons:
 			weapon.move()
 
 	# updates the position of all bullets on the screen
-	def updateBullets(self):
-	    self.bullet.position += bullet.velocity
-	    self.bullet.rect.center = bullet.pos
-		
+	def updateBullet(self):
+		for bullet in self.bullets:
+			bullet.move()
 
 	# updates the position of all ships on the screen and checks for collision with a bullet or another ship
 	def updateShips(self):

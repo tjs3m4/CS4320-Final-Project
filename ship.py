@@ -1,7 +1,12 @@
 import weapon
 import pygame
+import math
 from math import degrees
-from math import atan2
+from math import atan2 
+from math import sin
+from math import cos
+
+
 
 # Base class for all ships
 class Ship:
@@ -98,3 +103,30 @@ class AdvancedEnemyShip(AdvancedShip):
 		super(AdvancedShip, self).__init__(self, image, x, y, health)
 
 	# other functions for AdvancedShip AI
+
+class Bullet(Ship):
+
+	def __init__(self, image, animation, x , y, health, playerShip):
+		super(Bullet, self).__init__(image, animation, x , y, health)
+		self.playerShip = playerShip
+
+	# other funcitons for enemyShip AI
+	# overrides base ship accelerate()
+	def move(self):
+			if (self.x >= 0.9 * self.playerShip.x) and (self.x <= 1.1 * self.playerShip.x) and (self.y >= 0.9 * self.playerShip.y) and (self.y <= 1.1 * self.playerShip.y):
+				pos = pygame.mouse.get_pos()
+				self.angle = degrees(atan2(400 - pos[1], pos[0] - 512)) - 90  #self.playerShip.angle
+				self.velX = (pos[0] - 512) / 50
+				self.velY = (pos[1] - 400) / 50
+				self.x += (pos[0] - 512) / 10
+				self.y += (pos[1] - 400) / 10
+				self.texture = pygame.transform.rotate(self.masterTexture, self.angle)
+				self.sprite = self.texture.get_rect(center=(self.x, self.y))
+			elif (self.x != self.playerShip.x) and (self.y != self.playerShip.y):
+				self.x += 2 * self.velX
+				self.y += 2 * self.velY
+				self.texture = pygame.transform.rotate(self.masterTexture, self.angle)
+				self.sprite = self.texture.get_rect(center=(self.x, self.y))
+
+
+
