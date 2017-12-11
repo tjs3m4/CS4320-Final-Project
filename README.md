@@ -11,3 +11,5 @@ GROUP MEMBERS
 Read about how the game works [here](/docs/mechanics.md).  
 Controls can be found [here](/docs/controls.md).  
 Read about the code structure of the game [here](/docs/code_structure.md).
+
+The game was made using Python 3.6.3 and the Pygame library. Both are required for the game to run.
