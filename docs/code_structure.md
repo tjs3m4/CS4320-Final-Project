@@ -18,7 +18,7 @@ Back to [README](../README.md).
 ## [weapon.py](../weapon.py)
 * Contains the Weapon class that defines what a weapon is.
 
-## [button.py](../weapon.py)
+## [button.py](../button.py)
 * Data structure that represents a clickable button that appears in the menus.
 
 ## [gameState.py](../gameState.py)
