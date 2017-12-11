@@ -1,27 +1,25 @@
-# Asteroid - Config - Setting
+# Game plan - Config - Setting
 
 Needs	
 - Ship icon (Must have)
 - Unit icon (Must have)
-- Boss icon (Must have)
-- Explosion image (Must have)
-- Weapon icon (Must have)
+- Bullet icon (Must have)
+- Collision and hitting (Must have)
+- Weapon-Supply icon (Could have)
 - Scrolling down background image (Could have)
 
 # Manual interface:
 - Start/restart (Must have)
-- Select stages (Could have)
-- Mod (Won't have this time)
+- Menus (Could have)
 - Exit (Must have)
 
-# Automatic fire and Keyboard control movement.
+# Automatic fire and Keyboard control movement. (Could have)
 		
 # Game over once get hit. 
-- (Alternatively can have HP)(Won't have this time)
+- (Alternatively can have HP)
 
-# Enemy can drop weapon after defeat. 
-- (Alternatively can drop HP recover stuffs and Shield item---Avoid one hit)(Won't have this time)
-
+# Enemy can drop weapon after defeat or drop randomly.
+- Alternatively can drop HP recover stuffs and Shield item---Avoid one hit
 
 # Weapons change fire mod.
 - Default: uzi (Must have)
@@ -46,7 +44,7 @@ Needs
 	- Low rate drop by units(2%)
 
 
-# Totally 3 stages, each stage has a boss
+# Totally 3 stages, each stage has a boss (Optional)
 - Stage 1: (Must have)
 	- unit hp: 1
 	- boss hp: 50
@@ -65,7 +63,7 @@ Needs
 	- fast speed
 	- show up till 100 units kill
 
-# Infinity mode (Won't have this time)
+# Infinity mode (Optional)
 - Stage 1:
 	- unit 1: 1 credit
 	- boss 1: 20 credits
@@ -78,13 +76,11 @@ Needs
 - Record scores
 
 # To do list(Must have)
-```diff
 Feature
-- Ship icon
-- Unit icon
-- Boss icon
-- Explosion image
-- Weapon icon
+- Ship icon 
+- Unit icon 
+- Bullet icon 
+- Collision and hitting 
 
 UI
 - Start/restart
@@ -95,7 +91,8 @@ Weapon
 	- straight forward
 	- rapid 1s
 	- demage 2
-
+	
+# Optional list
 Stage
 - Stage 1:
 	- unit hp: 1
