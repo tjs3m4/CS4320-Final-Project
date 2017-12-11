@@ -21,7 +21,7 @@ Needs
 # Enemy can drop weapon after defeat or drop randomly.
 - Alternatively can drop HP recover stuffs and Shield item---Avoid one hit
 
-# Weapons change fire mod.
+# Weapons change fire mod. (Changing is optional, we should have a default one at least.)
 - Default: uzi (Must have)
 	- straight forward
 	- rapid 1s
