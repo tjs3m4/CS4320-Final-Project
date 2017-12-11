@@ -1,14 +1,14 @@
 # Files
-## [game.py](/game.py)
+## [game.py](../game.py)
 * Main game file, initializes the window, creates the graphicsManager, logicHandler, controller, menus, containers for game objects, and contains the main game logic loop.
 
-## [graphicsManager.py](graphicsManager.py)
+## [graphicsManager.py](../graphicsManager.py)
 * Contains the GraphicsManager class that is responsible for displaying everything to the screen.
 
-## [logicHandler.py](logicHandler.py)
+## [logicHandler.py](../logicHandler.py)
 * Contians the LogicHandler class which updates the state of the game.
 
-## [controller.py](controller.py)
+## [controller.py](../controller.py)
 * Contains the Controller class that handles user input, controls the player ship, and handles navigation for the menus.
 
 ## ship.py
