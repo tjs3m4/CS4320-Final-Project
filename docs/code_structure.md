@@ -1,41 +1,64 @@
 # Files
-	* game.py
-		Main game file, initializes the window, data structure the game needs to run, and contains the main game logic loop.
+## game.py
+* Main game file, initializes the window, creates the graphicsManager, logicHandler, controller, menus, containers for game objects, and contains the main game logic loop.
 
-	* controller.py
-		Contains the Controller class that handles user input, controls the player ship, and handles navigation for the menus.
+## graphicsManager.py
+* Contains the GraphicsManager class that is responsible for displaying everything to the screen.
 
-	* ship.py
-		Contains the classes that define what a Ship and AdvancedShip are, as well as their functions.
+## logicHandler.py
+* Contians the LogicHandler class which updates the state of the game.
 
-	* weapon.py
-		Contains the Weapon class that defines what a weapon is.
+## controller.py
+* Contains the Controller class that handles user input, controls the player ship, and handles navigation for the menus.
 
-	* bullet.py
-		Contains the Bullet class that defines what a bullet is.
+## ship.py
+* Contains various that define what a Ship is. Has more specific subclasses like AdvancedShip, EnemyShip, and bullet.
 
-## Classes and their Functionality
-	* Controller
-		* Handles user input events that move the ship around the screen, and events that navigate the menus.
-		* Has an AdvancedShip that represents the player's ship
+## weapon.py
+* Contains the Weapon class that defines what a weapon is.
 
-	* Ship
-		* Base class that represents what a Ship is.
-		* Contains data necessary for representing a Ship.
-		* Basic enemy ships are of this type.
+## button.py
+* Data structure that represents a clickable button that appears in the menus.
 
-	* AdvancedShip
-		* Is a Ship
-		* Extends the functionality of a Ship to make it capable of firing a weapon
-		* The player ship and boss ships are of this type
+## gameState.py
+* A simple enumeration for representing the current state the game is in. (PLAYING, PAUSED, MAIN_MENU, etc....)
 
-	* Weapon
-		* Contains the data necessary to represent a weapon.
-		* Has a Bullet
+# Classes and their Functionality
+## Controller
+* Handles user input events that move the ship around the screen, and events that navigate the menus.
+* Has lists of Buttons which represent the menus
+* Has an AdvancedShip that represents the player's ship
+* Can alter the state of the game based on user input. (paused state, restarting, quitting)
 
-	* Bullet
-		* Contains the data necessary to represent a bullet.
+## GraphicsManager
+* Has access to the list of ships, bullets, and the menus.
+* Responsible for refreshing the screen and drawing everything to it according to their position.
 
-## Summary of how classes interact
-	* The Controller controls a player's ship (which is of type AdvancedShip).
-	* An Advanced ship has a Weapon which has Bullets to shoot.
+## LogicHandler
+* Has access to the list of ships, bullets, and the menus.
+* Updates the position of all ships and bullets.
+* Handles collision detection and determines when to "destroy" ships.
+* Handles spawing enemy ships, firing the player's weapon, and spawing upgrades for the player to collect.
+* Manages the state of the game according to the player's health or existing state of the game.
+
+## Button
+* Has a function that is run when clicked on.
+* Has an on and off state with an image associated with each one.
+
+## Ship
+* Base class that represents what a Ship is.
+* Contains data necessary for representing a Ship.
+* All ships derive from this base class.
+
+## AdvancedShip
+* Extends the functionality of a Ship to make it capable of firing a weapon.
+* The player ship is of this type.
+
+## EnemyShip
+* Overwrites functionality of a ship to make it target the player's ship.
+
+## Bullet
+* Uses data from a ship, but overwrites some functionality because its logic for rotating and moving is different.
+
+## Weapon
+* Contains the data necessary to represent a weapon.
