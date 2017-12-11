@@ -8,6 +8,9 @@ GROUP MEMBERS
 * Chuyang Lin: cl6vf
 * Runnan Dong; rdyz6
 
+***YouTube video Url***
+https://youtu.be/9W9N8e0u7ek
+
 Read about how the game works [here](/docs/mechanics.md).  
 Controls can be found [here](/docs/controls.md).  
 Read about the code structure of the game [here](/docs/code_structure.md).
