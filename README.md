@@ -9,7 +9,7 @@ GROUP MEMBERS
 * Runnan Dong; rdyz6
 
 ***YouTube video Url***
-https://youtu.be/9W9N8e0u7ek
+https://www.youtube.com/edit?o=U&video_id=Mqz7x5uCJrc
 
 Read about how the game works [here](/docs/mechanics.md).  
 Controls can be found [here](/docs/controls.md).  
