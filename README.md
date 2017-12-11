@@ -8,7 +8,7 @@ GROUP MEMBERS
 * Chuyang Lin: cl6vf
 * Runnan Dong; rdyz6
 
-Read about how the game works [here](/docs/mechanics.md).
+Read about how the game works [here](/docs/mechanics.md).  
 Controls can be found [here](/docs/controls.md).
 
 Read about the code structure of the game [here](/docs/code_structure.md).
