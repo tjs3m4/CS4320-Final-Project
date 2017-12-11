@@ -6,6 +6,7 @@ GROUP MEMBERS
 * Shiqi Wang: swz45
 * Yanghao Yue: yyzc7
 * Chuyang Lin: cl6vf
+* Runnan Dong; rdyz6
 
 Read about how the game works [here](/docs/mechanics.md).
 Controls can be found [here](/docs/controls.md).
