@@ -1,3 +1,4 @@
+Back to [README](../README.md).  
 # Files
 ## [game.py](../game.py)
 * Main game file, initializes the window, creates the graphicsManager, logicHandler, controller, menus, containers for game objects, and contains the main game logic loop.
@@ -11,16 +12,16 @@
 ## [controller.py](../controller.py)
 * Contains the Controller class that handles user input, controls the player ship, and handles navigation for the menus.
 
-## ship.py
+## [ship.py](../ship.py)
 * Contains various that define what a Ship is. Has more specific subclasses like AdvancedShip, EnemyShip, and bullet.
 
-## weapon.py
+## [weapon.py](../weapon.py)
 * Contains the Weapon class that defines what a weapon is.
 
-## button.py
+## [button.py](../weapon.py)
 * Data structure that represents a clickable button that appears in the menus.
 
-## gameState.py
+## [gameState.py](../gameState.py)
 * A simple enumeration for representing the current state the game is in. (PLAYING, PAUSED, MAIN_MENU, etc....)
 
 # Classes and their Functionality
